@@ -1,54 +1,53 @@
-spring:
- config:
-  import:
-    - 'consul:10.4.3.249:8500/config/cloud-demo;/config/application;/config/xxx;/config/demo1'
- application:
-    name: jde-expense-transfer-service
- cloud:
-    consul:
-      config:
-        fail-fast: true
-        prefixes: config
-      host: 10.4.3.249
-      port: 8500
-      discovery:
-       tags: version=1.0
-       serviceName: jde-expense-transfer-service
-       healthCheckPath: /actuator/health
-       healthCheckUrl: http://10.4.4.136:8087/actuator/health
-       healthCheckInterval: 10s
-       healthCheckCriticalTimeout: 30s
- datasource:
-  type: com.alibaba.druid.pool.DruidDataSource
-  url: jdbc:oracle:thin:@//10.4.1.10:1521/tkora.topkey.com.tw
-  username: EMESC
-  password: EMESC
-  driver-class-name: oracle.jdbc.OracleDriver
-  druid:
-   socket-timeout: 6000
-   stat-view-servlet:
-    enabled: true
-    url-pattern: /druid/*
-    reset-enable: false
-    aop-patterns: com.topkey.jdeexpensetransfer.controller.* #Spring監控AOP切入點，多個用逗號分隔
-   filter:
-    stat:
-     enabled: true
- rabbitmq:
-   host: 10.4.3.249
-   port: 5672
-   username: jde-expense-transfer
-   password: secret
+#spring:
+# config:
+#  import:
+#    - 'consul:10.4.3.249:8500/config/cloud-demo;/config/application;/config/xxx;/config/demo1'
+# application:
+#    name: jde-expense-transfer-service
+# cloud:
+#    consul:
+#      config:
+#        fail-fast: true
+#        prefixes: config
+#      host: 10.4.3.249
+#      port: 8500
+#      discovery:
+#       tags: version=1.0
+#       serviceName: jde-expense-transfer-service
+#       healthCheckPath: /actuator/health
+#       healthCheckUrl: http://10.4.4.136:8087/actuator/health
+#       healthCheckInterval: 10s
+#       healthCheckCriticalTimeout: 30s
+# datasource:
+#  type: com.alibaba.druid.pool.DruidDataSource
+#  url: jdbc:oracle:thin:@//10.4.1.10:1521/tkora.topkey.com.tw
+#  username: EMESC
+#  password: EMESC
+#  driver-class-name: oracle.jdbc.OracleDriver
+#  druid:
+#   socket-timeout: 6000
+#   stat-view-servlet:
+#    enabled: true
+#    url-pattern: /druid/*
+#    reset-enable: false
+#    aop-patterns: com.topkey.jdeexpensetransfer.controller.* #Spring監控AOP切入點，多個用逗號分隔
+#   filter:
+#    stat:
+#     enabled: true
+# rabbitmq:
+#   host: 10.4.3.249
+#   port: 5672
+#   username: jde-expense-transfer
+#   password: secret
+#
+#server:
+#  port: 8087
+#management:
+# endpoints:
+#  web:
+#   exposure:
+#    include: health,info
+#custom:
+# logstash_uri: 10.4.3.249:4660
+# appender_ref: TCP_LOGSTASH
 
-server:
-  port: 8087
-management:
- endpoints:
-  web:
-   exposure:
-    include: health,info
-custom:
- logstash_uri: 10.4.3.249:4660
- appender_ref: TCP_LOGSTASH
-
- 
