@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "F0911Z1",schema = "CRPdta")
+@Table(name = "F0911Z1",schema = "${jde-table.F0911Z1.schema}")
 @IdClass(ExpenseId.class)
 public class Expense {
 
