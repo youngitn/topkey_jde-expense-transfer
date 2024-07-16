@@ -7,6 +7,7 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.support.ListenerExecutionFailedException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Service;
@@ -28,13 +29,15 @@ public class ExpenseService {
 	@Autowired
     private ExpenseRepository expenseRepository;
 
+    @Value("${jde-id}")
+    private String jdeId;
 	
 	@RabbitListener(queues = "travel-expense-queue" , containerFactory = "rabbitListenerContainerFactory")
 	@SendTo("callbackRoutingKey")//這個que和回傳生產者無關,有需要的話可以監聽這個que做其他處理
 	public StandardResponse handleMessage(ArrayList<Expense> message,Channel channel,Message msg) throws IOException {
 		
 		
-		String isOK = "OK";
+		
 		StandardResponse res = new StandardResponse();
 		Expense al =null;
 		try {
@@ -48,8 +51,8 @@ public class ExpenseService {
 
 			expense.setVnedln(newLineNum);
 			//暫先用SIMON帳號
-			expense.setVnedus("SIMON");
-			expense.setVnuser("SIMON");
+			expense.setVnedus(this.jdeId);
+			expense.setVnuser(this.jdeId);
 			//expense.setVnedtc("A");
 			
 			expense.setVnexa("旅費對接批號_"+dbt);
