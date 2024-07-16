@@ -8,7 +8,6 @@ pipeline {
     environment {
 		PROJECT_NAME = "jde-expense-transfer"
         APP_NAME = "${PROJECT_NAME}.jar"
-        CONFIG_FILE = "./config/application-prod.yml"
         APP_HOME = "/home/angela/service/${PROJECT_NAME}"
         GIT_CREDENTIALS_ID = '5486ab12-f4dc-43a7-9d7a-384505b067f1'
         DOCKER_IMAGE = 'local-${PROJECT_NAME}-image:latest'
@@ -18,7 +17,7 @@ pipeline {
     stages {
         stage('Checkout from GitHub') {
             steps {
-                git credentialsId: "${GIT_CREDENTIALS_ID}", url: 'https://github.com/youngitn/topkey_${PROJECT_NAME}.git', branch: 'master'
+                git credentialsId: "${GIT_CREDENTIALS_ID}", url: 'https://github.com/youngitn/topkey_jde-expense-transfer.git', branch: 'master'
             }
         }
         stage('Maven Build') {
