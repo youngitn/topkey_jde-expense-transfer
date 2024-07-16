@@ -7,10 +7,10 @@ pipeline {
     }
     environment {
 		PROJECT_NAME = "jde-expense-transfer"
-        APP_NAME = "${PROJECT_NAME}.jar"
-        APP_HOME = "/home/angela/service/${PROJECT_NAME}"
+        APP_NAME = "jde-expense-transfer.jar"
+        APP_HOME = "/home/angela/service/jde-expense-transfer"
         GIT_CREDENTIALS_ID = '5486ab12-f4dc-43a7-9d7a-384505b067f1'
-        DOCKER_IMAGE = 'local-${PROJECT_NAME}-image:latest'
+        DOCKER_IMAGE = 'local-jde-expense-transfer-image:latest'
         JAVA_HOME = '/home/angela/graalvm-jdk-22'
         PATH = "${JAVA_HOME}/bin:${PATH}"
     }
