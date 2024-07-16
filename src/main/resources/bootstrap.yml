@@ -10,7 +10,7 @@ spring:
      fail-fast: true
      prefixes: config
     discovery:
-     serviceName: ${spring.application.name}
+     serviceName: jde-expense-transfer-service
      tags: dev
      healthCheckInterval: 10s
      healthCheckCriticalTimeout: 30s
