@@ -4,11 +4,12 @@ spring:
  cloud:
   consul:
     config:
+     enabled: true
+     prefixes: config
      watch:
       enabled: true
-     format: YAML
+     format: yaml
      fail-fast: true
-     prefixes: config
     discovery:
      serviceName: jde-expense-transfer-service
      tags: dev
@@ -16,7 +17,10 @@ spring:
      healthCheckCriticalTimeout: 30s
 
 management:
-    endpoints:
-     web:
-      exposure:
-       include: health,info
+ endpoint:
+  health:
+   show-details: always
+ endpoints:
+  web:
+   exposure:
+    include: "*"
