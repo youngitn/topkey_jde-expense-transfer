@@ -55,7 +55,7 @@ public class ExpenseService {
 			expense.setVnuser(this.jdeId);
 			//expense.setVnedtc("A");
 			
-			expense.setVnexa("旅費對接批號_"+dbt);
+			//expense.setVnexa("旅費對接批號_"+dbt);
 			//進行儲存
 			al = expenseRepository.save(expense);
 //			log.info("ConsumerService>>>>>>>>>Received message from topic queue: {}", message);
