@@ -6,8 +6,7 @@
 		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
 		<destination>${logstashUri}</destination>
 		<encoder class="net.logstash.logback.encoder.LogstashEncoder">
-			<customFields>{"serviceName": "${serviceName}"}</customFields>
-			<customFields>{"tags": "${tags}"}</customFields>
+			<customFields>{"tags": "${tags}","serviceName": "${serviceName}"}</customFields>
 		</encoder>
 	</appender>
 
