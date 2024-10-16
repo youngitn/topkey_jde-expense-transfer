@@ -44,8 +44,14 @@ public class ExpenseService {
 			//先取得傳票日期,做行號查詢
 			Expense expense = message.get(0);
 			String dbt = expense.getVnedbt();
+			String vnexr = expense.getVnexr();
+		
+			expenseRepository.deleteByVnexr(vnexr+"%");
+			
+			log.info("刪除已存在資料Vnexr=|"+vnexr+"|");
 			//JDE查詢時要先補足空白否則查不到符合條件
 			dbt = String.format("%-15s", dbt);
+			
 			int newLineNum=expenseRepository.findMaxVnedlnByVnedbt(dbt).orElse(0)+1000;
 			log.info("新行號Vnedl=>newLineNum------------------>"+newLineNum);
 
