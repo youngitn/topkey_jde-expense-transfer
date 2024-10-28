@@ -46,12 +46,11 @@
 spring:
  cloud:
   consul:
-   host: 10.4.0.53
+   host: consul_server
    port: 8500
    discovery:
     healthCheckPath: /actuator/health
-    healthCheckUrl: http://10.4.4.136:${server.port}/actuator/health
-custom:
- logstash_uri: 10.4.3.249:4660
- appender_ref: TCP_LOGSTASH
+#custom:
+# logstash_uri: 10.4.3.249:4660
+# appender_ref: TCP_LOGSTASH
 

@@ -56,7 +56,7 @@ public class ExpenseService {
 			log.info("新行號Vnedl=>newLineNum------------------>"+newLineNum);
 
 			expense.setVnedln(newLineNum);
-			//暫先用SIMON帳號
+			//使用config定義的ERP帳號 測試用SIMON 正式用TKIRIS
 			expense.setVnedus(this.jdeId);
 			expense.setVnuser(this.jdeId);
 			//expense.setVnedtc("A");
